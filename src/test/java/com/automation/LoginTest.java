@@ -4,7 +4,9 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 //https://automationexercise.com/login
 public class LoginTest {
@@ -33,8 +35,20 @@ public class LoginTest {
 		
 		//Enter Account Information page
 		driver.findElement(By.id("id_gender1")).click();
+		//Enter paswwore
+		driver.findElement(By.xpath("//*[@data-qa='password']")).sendKeys("test123");
 		
+		WebElement dayDD = driver.findElement(By.xpath("//*[@data-qa='days']"));
+		Select daySelect = new Select(dayDD);
+		daySelect.selectByVisibleText("10");
 		
+		WebElement monthDD = driver.findElement(By.xpath("//select[@data-qa='months']"));
+		Select monthSelect = new Select(monthDD);
+		monthSelect.selectByVisibleText("April");
+		
+		WebElement yearsDD = driver.findElement(By.xpath("//select[@data-qa='years']"));
+		Select yearsSelect = new Select(yearsDD);
+		yearsSelect.selectByVisibleText("2000");
 		
 	}
 
